@@ -71,6 +71,9 @@ expr.o : expr.h expr.c
 relu_approx.o : relu_approx.h relu_approx.c
 	$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) -o relu_approx.o relu_approx.c $(LIBS)
 
+leaky_relu_approx.o : leaky_relu_approx.h leaky_relu_approx.c
+	$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) -o leaky_relu_approx.o leaky_relu_approx.c $(LIBS)
+
 s_curve_approx.o : s_curve_approx.h s_curve_approx.c
 	$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) -o s_curve_approx.o s_curve_approx.c $(LIBS)
 

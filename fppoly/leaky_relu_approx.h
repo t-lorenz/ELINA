@@ -20,29 +20,19 @@
 
 
 
-#ifndef __BACKSUBSTITUTE_H_INCLUDED__
-#define __BACKSUBSTITUTE_H_INCLUDED__
+#ifndef __LEAKY_RELU_APPROX_H_INCLUDED__
+#define __LEAKY_RELU_APPROX_H_INCLUDED__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "fppoly.h"
-#include "expr.h"
-#include "compute_bounds.h"
-#include "relu_approx.h"
-#include "s_curve_approx.h"
-#include "parabola_approx.h"
-#include "log_approx.h"
-#include "pool_approx.h"
-#include "lstm_approx.h"
-#include "leaky_relu_approx.h"
+#include "backsubstitute.h"
 
-void update_state_using_previous_layers_parallel(elina_manager_t *man, fppoly_t *fp, size_t layerno);
+void handle_leaky_relu_layer(elina_manager_t *man, elina_abstract0_t* element, size_t num_neurons, size_t *predecessors, size_t num_predecessors, bool use_default_heuristics);
 
 #ifdef __cplusplus
  }
 #endif
 
 #endif
-
