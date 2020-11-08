@@ -708,6 +708,40 @@ def handle_pool_layer(man, element, pool_size, input_size, strides, pad_top, pad
         print(inst)
     return res
 
+def handle_maxpool_boopathy_layer(man, element, input_size, output_size, predecessors, num_predecessors):
+    """
+    handle the max pooling layer with boopathy linear bounds.
+
+    Parameters
+    ----------
+    man : ElinaManagerPtr
+        Pointer to the ElinaManager.
+    element : ElinaAbstract0Ptr
+        Pointer to the ElinaAbstract0 abstract element.
+    input_size: POINTER(c_size_t)
+        the size of the input
+    output_size : POINTER(c_size_t)
+        The size of the output
+    predecessors: POINTER(c_size_t)
+        the layers before the current layer
+    num_predecessors: c_size_t
+        the number of predecessors of the current layer
+    Returns
+    -------
+    res : c_size_t
+        Number of neurons in the last layer
+    """
+    res=None
+    try:
+        handle_maxpool_boopathy_c = fppoly_api.handle_boopathy_maxpool_layer
+        handle_maxpool_boopathy_c.restype = c_size_t
+        handle_maxpool_boopathy_c.argtypes = [ElinaManagerPtr, ElinaAbstract0Ptr, POINTER(c_size_t), POINTER(c_size_t), POINTER(c_size_t), c_size_t]
+        res = handle_maxpool_boopathy_c(man, element, input_size, output_size, predecessors, num_predecessors)
+    except Exception as inst:
+        print('Problem with loading/calling "handle_pool_layer" from "libfppoly.so"')
+        print(inst)
+    return res
+
 def handle_residual_layer(man, element, num_neurons, predecessors, num_predecessors):
     """
     handle the Residual layer

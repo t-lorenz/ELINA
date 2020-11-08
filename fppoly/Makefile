@@ -86,10 +86,11 @@ pool_approx.o : pool_approx.h pool_approx.c
 lstm_approx.o : lstm_approx.h lstm_approx.c
 	$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) -o lstm_approx.o lstm_approx.c $(LIBS)
 
-
 maxpool_convex_hull.o : maxpool_convex_hull.h maxpool_convex_hull.c
 	$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) -o maxpool_convex_hull.o maxpool_convex_hull.c $(LIBS)
 
+maxpool_boopathy_approx.o : maxpool_boopathy_approx.h maxpool_boopathy_approx.c
+	$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) -o maxpool_boopathy_approx.o maxpool_boopathy_approx.c $(LIBS)
 
 install:
 	$(INSTALLd) $(LIBDIR); \
