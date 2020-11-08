@@ -316,7 +316,7 @@ void compute_S_curve_bounds(double x_lb, double x_ub, bool is_sigm,
         if (x_lb <= -limit) {
             *k_lb = 0;
             *b_lb = is_sigm ? sigm(x_lb) : tanh(x_lb);
-        } else if (abs(x_lb) >= abs(x_ub)) {
+        } else if (fabs(x_lb) >= fabs(x_ub)) {
             new_S_curve_tang_bound(*k_lb, *b_lb, x_lb, is_sigm, false);
         } else {
             double k1, b1;
@@ -336,7 +336,7 @@ void compute_S_curve_bounds(double x_lb, double x_ub, bool is_sigm,
         if (x_ub >= limit) {
             *k_ub = 0;
             *b_ub = is_sigm ? sigm(x_ub) : tanh(x_ub);
-        } else if (abs(x_ub) >= abs(x_lb)) {
+        } else if (fabs(x_ub) >= fabs(x_lb)) {
             new_S_curve_tang_bound(*k_ub, *b_ub, x_ub, is_sigm, true);
         }
         else {
