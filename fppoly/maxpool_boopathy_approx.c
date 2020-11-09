@@ -43,7 +43,7 @@ size_t handle_boopathy_maxpool_layer(elina_manager_t *man, elina_abstract0_t *el
         // Find max lower bound
         size_t i;
         for (i = 0; i < max_pool_size; i++) {
-            size_t input_index = i * max_pool_size + out_pos;
+            size_t input_index = i * num_out_neurons + out_pos;
             double lower_bound = -in_neurons[input_index]->lb;
 
             if (lower_bound > max_lower_bound) {
@@ -58,7 +58,7 @@ size_t handle_boopathy_maxpool_layer(elina_manager_t *man, elina_abstract0_t *el
         // as they can never be the max value.
         size_t actual_pool_size = 0;
         for (i = 0; i < max_pool_size; i++) {
-            size_t input_index = i * max_pool_size + out_pos;
+            size_t input_index = i * num_out_neurons + out_pos;
             double lower_bound = -in_neurons[input_index]->lb;
             double upper_bound = in_neurons[input_index]->ub;
 
