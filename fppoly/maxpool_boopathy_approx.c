@@ -17,6 +17,7 @@ size_t handle_boopathy_maxpool_layer(elina_manager_t *man, elina_abstract0_t *el
     size_t max_pool_size = input_size[0];
 
     fppoly_t *fp = fppoly_of_abstract0(element);
+    size_t current_layer_index = fp->numlayers;
     fppoly_add_new_layer(fp, num_out_neurons, predecessors, num_predecessors, false);
 
     // lower bounds of inputs
@@ -26,7 +27,6 @@ size_t handle_boopathy_maxpool_layer(elina_manager_t *man, elina_abstract0_t *el
     // map from flattened pooling index to original input variable index
     size_t *pool_map = (size_t *) calloc(max_pool_size, sizeof(size_t));
 
-    size_t current_layer_index = fp->numlayers;
     neuron_t **out_neurons = fp->layers[current_layer_index]->neurons;
     int previous_layer_index = predecessors[0] - 1;
     neuron_t **in_neurons = fp->layers[previous_layer_index]->neurons;
